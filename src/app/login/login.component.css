@@ -1,0 +1,168 @@
+.loginbButton{
+    background-color: rgba(0, 136, 204, 0.934);
+    padding: 10px;
+    border: 1px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+  
+.login-div {
+    position: relative;
+    text-align:center;
+    width: 330px;
+    height: 75vh;
+    padding: 50px 50px 50px 50px;
+    background: 	#eeeeee;
+    box-shadow: 13px 13px 50px  #979797, -13px -13px 50px #ffffff;
+  }
+  
+  .login-div .logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    box-shadow:
+          /* logo shadow */ 0px 0px 2px #5f5f5f,
+      /* offset */ 0px 0px 0px 5px #ecf0f3, /*bottom right */ 8px 8px 15px #a7aaaf,
+      /* top left */ -8px -8px 15px #ffffff;
+      /* overflow: hidden; */
+  }
+  .login-div .logo img {
+    width: 100px;
+    height: 100px;
+    /* border-radius: 50%; */
+    margin: 0 auto;
+  }
+  
+  .login-div .title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 24px;
+    letter-spacing: 0.5px;
+  }
+  
+  .login-div .sub-title {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 7px;
+    letter-spacing: 3px;
+  }
+  
+  .fields {
+    width: 100%;
+    padding: 45px 5px 5px 5px;
+  }
+  
+  .fields input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #555;
+    height: 45px;
+    /* padding: 20px 25px ; */
+  }
+  
+  .fields .password {
+    font-family:  sans-serif;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 30px;
+    /* border-radius: 25px; */
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+    width: 100%;
+  }
+  
+  .fields svg {
+    height: 18px;
+    margin: auto;
+    display: inline-flex;
+  }
+  
+  .signin-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family:  sans-serif;
+    color: #eee;
+    text-align: center;
+    background: #0088cc;
+    box-shadow: 3px 3px 8px #b1b1b1db, -3px -3px 8px #ffffff;
+    transition: 0.5s;
+  }
+  .link {
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .link a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 15px;
+  }
+  svg{
+    width: 100%;
+    height: 100%;
+  }
+/* .container{
+  box-shadow: linear-gradient(33deg, #c9cccb, #f2f3f3, #cedcff, #f5baa4);
+    background-size: 800% 800%;
+    animation: loginBackAnima 30s ease infinite;
+  } */
+  @keyframes loginBackAnima {
+    0%{background-position:68% 0%}
+    50%{background-position:33% 100%}
+    100%{background-position:68% 0%}
+}
+.username{
+    font-family:  sans-serif;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 30px;
+    /* border-radius: 25px; */
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+    width: 100%;
+  }
+
+  .password{
+    font-family:  sans-serif;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 30px;
+    /* border-radius: 25px; */
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+    width: 100%;
+  }
+.username.invalidInput{
+  box-shadow: 0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9 !important;
+}
+.password.invalidInput{
+  box-shadow: 0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9,
+              0 0 1px 1px #f03a1ab9 !important;
+}
+.login-div.container{
+    /* background: linear-gradient(33deg, #c9cccb, #f2f3f3, #cedcff, #f5baa4); */
+      background-size: 800% 800%;
+      box-shadow: linear-gradient(33deg, #3cd19f, #0acfcf, #124ad6, #c34213);;
+      animation: loginGlowAni 10s ease infinite;
+    }
+    @keyframes loginGlowAni {
+      0%{box-shadow: 13px 13px 50px   #3cd19f, -13px -13px 50px #ffffff}
+      50%{box-shadow: 13px 13px 50px  #0acfcf, -13px -13px 50px #ffffff;}
+      100%{box-shadow: 13px 13px 50px  #124ad6, -13px -13px 50px #ffffff;}
+  }
+  .outterdiv{
+    display: ruby-text;
+    text-align:center;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+  }

@@ -1,0 +1,19 @@
+<div class="NgxEditor__Wrapper" *ngIf="showEditor">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+  <ngx-editor
+    [editor]="editor"
+    [(ngModel)]='htmlContent'
+    formControlName="editorContent"
+    id="ed"
+    [placeholder]="'Type here...'"
+  ></ngx-editor>
+  {{'hi' + renderedHtmlContent }}
+  </form>
+  <!-- {{htmlContent}} -->
+<!-- <div [innerHTML]="renderedHtmlContent"></div> -->
+  <!-- <div [innerHTML]="renderedHtmlContent" ><p>yo asdasd 
+      asdas</p>
+  </div> -->
+  <!-- {{a}} -->
+</div>

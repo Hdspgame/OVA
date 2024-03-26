@@ -1,0 +1,33 @@
+<div class="ovaHead">
+    <header>TASKNAMEHERE</header>
+</div>
+<div class="ovaDiv">
+    <div class="taskDiv">
+        <table>
+            <tr><h1>Task Name</h1></tr>
+            <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Assigned to : User</td></tr>
+            <tr><td><div>Status : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : User</td></tr>
+            <tr><td><div>Project  : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : User</td></tr>
+            <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Updated Date : User</td></tr> 
+        </table>
+     </div>
+     <div class="descDiv">
+     <ng-container *ngIf="descEditorVisible">
+            <app-editor class="editor" [showEditor]="descEditorVisible" [form]="descForm"></app-editor>
+            <button (click)="getDataForDescription()">yoyoyo</button>
+        </ng-container>
+        <ng-container *ngIf="descDivVisible">
+            <div>
+                <div>
+                    <button (click)="editDescription()">edit</button>
+                    <button>upload</button>
+                </div>
+            <div [innerHTML]="descData"></div>
+            </div>
+        </ng-container>
+    </div>
+   <div class="uploadDiv">uploads</div>
+   <div class="commentDiv descDiv">
+    <app-comments></app-comments>
+ </div>
+</div>

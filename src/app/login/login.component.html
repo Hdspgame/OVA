@@ -1,0 +1,90 @@
+<div class="outterdiv">
+    <div class="login-div" [ngClass]="validInput?'container':''">
+      <div class="logo">
+        <svg width="273" height="219" viewBox="0 0 273 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="273" height="219" fill="#1E1E1E"/>
+            <g id="comp">
+            <g id="M" filter="url(#filter0_di_0_1)">
+            <path d="M67 211V0H124.695L170.095 50L211.44 0H269V211H211.44V69.5851L170.095 108L124.695 69.5851V211H67Z" fill="url(#paint0_linear_0_1)" fill-opacity="0.5" shape-rendering="crispEdges"/>
+            </g>
+            <g id="T" filter="url(#filter1_bddi_0_1)">
+            <path d="M189 0H4V36H66V211H126V36H189V0Z" fill="url(#paint1_linear_0_1)" fill-opacity="0.8" shape-rendering="crispEdges"/>
+            </g>
+            </g>
+            <defs>
+            <filter id="filter0_di_0_1" x="63" y="0" width="210" height="219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_0_1"/>
+            </filter>
+            <filter id="filter1_bddi_0_1" x="0" y="-4" width="193" height="223" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_0_1"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="effect1_backgroundBlur_0_1" result="effect2_dropShadow_0_1"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="effect2_dropShadow_0_1" result="effect3_dropShadow_0_1"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow_0_1" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="shape" result="effect4_innerShadow_0_1"/>
+            </filter>
+            <linearGradient id="paint0_linear_0_1" x1="72" y1="2.7798e-05" x2="303.042" y2="162.64" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F50707"/>
+            <stop offset="1" stop-color="#0B40FB"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear_0_1" x1="12" y1="-2.56508e-06" x2="128" y2="206" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0B40FB"/>
+            <stop offset="1" stop-color="#972B2B" stop-opacity="0.98"/>
+            </linearGradient>
+            </defs>
+            </svg>
+      </div>
+      <div class="title">OVA</div>
+      <div class="sub-title">The task manager</div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="fields">
+        <div class="username" [ngClass]="inValidUser ? 'invalidInput' : ''">
+          <svg fill="#999" viewBox="0 0 20 20">
+            <path class="path1" d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z">
+            </path>
+          </svg>
+          <input type="username" formControlName="username" placeholder="UserName" required>
+        </div>
+        <div class="password" [ngClass]="inValidPass ? 'invalidInput' : ''">
+          <svg fill="#999" viewBox="0 0 20 20">
+            <path d="M17.308,7.564h-1.993c0-2.929-2.385-5.314-5.314-5.314S4.686,4.635,4.686,7.564H2.693c-0.244,0-0.443,0.2-0.443,0.443v9.3c0,0.243,0.199,0.442,0.443,0.442h14.615c0.243,0,0.442-0.199,0.442-0.442v-9.3C17.75,7.764,17.551,7.564,17.308,7.564 M10,3.136c2.442,0,4.43,1.986,4.43,4.428H5.571C5.571,5.122,7.558,3.136,10,3.136 M16.865,16.864H3.136V8.45h13.729V16.864z M10,10.664c-0.854,0-1.55,0.696-1.55,1.551c0,0.699,0.467,1.292,1.107,1.485v0.95c0,0.243,0.2,0.442,0.443,0.442s0.443-0.199,0.443-0.442V13.7c0.64-0.193,1.106-0.786,1.106-1.485C11.55,11.36,10.854,10.664,10,10.664 M10,12.878c-0.366,0-0.664-0.298-0.664-0.663c0-0.366,0.298-0.665,0.664-0.665c0.365,0,0.664,0.299,0.664,0.665C10.664,12.58,10.365,12.878,10,12.878"></path>
+          </svg>  
+          <input type="password" formControlName="password" placeholder="Password">
+        </div>
+      </div>
+      <button type="submit" class="signin-button">Login</button>
+      <div class="link">
+        <a href="#">Forgot your password?</a>
+      </div>
+    </form>
+    </div>
+  </div>
