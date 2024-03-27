@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Component,  } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CusError } from './Error';
+
 
 @Component({
   selector: 'app-login',
@@ -13,11 +16,17 @@ export class LoginComponent {
   public inValidPass: boolean = false;
   public validInput:boolean =false;
   private response: any;
+  private error!:CusError;
+  private responseObj:any;
+  public errorResponse=false;
+  errorMessage:String='There is an exception';
+  urlbase='';
   responseCode!:HttpStatusCode;
-  private url='http://localhost:8080/v1/usermanagement';
-  constructor(private fb: FormBuilder,private http: HttpClient) { }
+  private url='http://172.20.10.2:8001/v1/usermanagement';
+  constructor(private fb: FormBuilder,private http: HttpClient,private router :Router) { }
 
   ngOnInit(): void {
+    sessionStorage.setItem("userLogged","false");
     this.loginForm = this.fb.group({
       username: new FormControl('', [
         Validators.required,
@@ -32,6 +41,8 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    this.errorResponse=false;
+    this.urlbase='';
     // TODO: Submit the form to your backend API
     console.log(this.loginForm.controls);
     if(this.loginForm.controls['username'].status=='INVALID'){
@@ -53,7 +64,7 @@ export class LoginComponent {
       this.validInput=true
       let userName=this.loginForm.controls['username'].value;
       let passWord=this.loginForm.controls['password'].value;
-      this.url=this.url+'?username='+userName+'&password='+passWord;
+      this.urlbase=this.url+'?username='+userName+'&password='+passWord;
       console.log(this.url);
       let HTTPOptions:Object = {
 
@@ -62,11 +73,28 @@ export class LoginComponent {
         }),
         responseType: 'text'
      }
-      this.http.post<HttpResponse<any>>(this.url,null,HTTPOptions).subscribe(data=>{
+      this.http.post<any>(this.urlbase,null,HTTPOptions).subscribe(data=>{
         console.log("data",data);
+        this.responseObj=data;
+        console.log(this.responseObj);
+        const jsonObject = JSON.parse(data);
+        sessionStorage.setItem("userLogged","true");
+        const userobj= jsonObject.userResponse;
+        console.log("user",userobj);
+        sessionStorage.setItem("user",JSON.stringify(userobj));
+        sessionStorage.setItem("userType",userobj.userRole)
+        this.router.navigate(['/dashboard']);
+      },
+      (error)=>{
+        console.log(error);
+        // this.error=error.error;
+        if(error.status==0){
+      const jsonObject = JSON.parse(error.error);
+        this.errorMessage=jsonObject.message;
+        console.log(jsonObject)
         
-        this.response=data.body,
-        this.responseCode=data.status
+      }
+        this.errorResponse=true;
       });
         console.log("response" ,this.response);
         console.log("response" ,this.responseCode);

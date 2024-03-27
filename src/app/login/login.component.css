@@ -166,3 +166,11 @@
     height: 100%;
     margin: 20px;
   }
+  .errorDiv{
+    visibility: hidden;
+  }
+  .exceptionClass{
+    color: red;
+    text-decoration: double;
+
+  }

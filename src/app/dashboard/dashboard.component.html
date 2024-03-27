@@ -1,19 +1,14 @@
 <app-navbar></app-navbar>
 <div>
-    <div>
+    <div *ngIf="isAdminRole">
         <ul>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li>task1</li>
-            <li><a routerLink="/task">task3</a></li>
+            <li *ngFor='let userObj of userlist'> {{userObj.userName}}     {{userObj.userRole}}</li> 
         </ul>
     </div>
-    <div></div>
+    <div *ngIf="isUserRole">
+       <table>
+        <thead><tr><th>Task ID</th><th>Task Description</th><th>Created By</th></thead>
+        <tr *ngFor="let task of taskList"><td><a href="/task/{{task.taskId}}">{{task.taskId}}</a></td><td>{{task.taskDescription}}</td>{{task.createdBy}}<td></td></tr>
+       </table>
+    </div>
 </div>

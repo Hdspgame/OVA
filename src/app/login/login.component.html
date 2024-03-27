@@ -82,8 +82,7 @@
         </div>
       </div>
       <button type="submit" class="signin-button">Login</button>
-      <div class="link">
-        <a href="#">Forgot your password?</a>
+      <div [ngClass]="errorResponse?'exceptionClass':'errorDiv'">{{errorMessage}}
       </div>
     </form>
     </div>
