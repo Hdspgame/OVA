@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [adminView]="isAdminRole" (emitter)="eventHandle($event)"> </app-navbar>
 <div>
     <div *ngIf="isAdminRole">
         <ul>
@@ -11,4 +11,11 @@
         <tr *ngFor="let task of taskList"><td><a href="/task/{{task.taskId}}">{{task.taskId}}</a></td><td>{{task.taskDescription}}</td>{{task.createdBy}}<td></td></tr>
        </table>
     </div>
+    <div >
+    </div>
+    {{isDialogbox}}
+    <ng-container *ngIf="isDialogbox">
+    
+        <app-create-task [xys]="isDialogbox" (closeDialogEmiter)="closeDialogue($event)"></app-create-task>
+   </ng-container>
 </div>

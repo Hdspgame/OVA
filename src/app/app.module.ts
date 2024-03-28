@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Output } from '@angular/core';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import { TaskserviceService } from './taskservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EventEmitter } from 'stream';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 
@@ -28,6 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommentsComponent,
     DashboardComponent,
     PiechartComponent,
+    CreateUserComponent,
+    CreateTaskComponent,
     ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/Task';
+import { CreateUserComponent } from '../create-user/create-user.component';
 import { CusError } from '../login/Error';
 import { Project } from '../Project';
 import { User } from './User';
@@ -22,6 +23,7 @@ export class DashboardComponent {
   private responseObj:any;
   public isAdminRole:boolean=false;
   public isUserRole:boolean=false;
+  isDialogbox : boolean = false;
   errorMessage:String='There is an exception';
   urlbase='';
   private urlAdmin='http://172.20.10.2:8001/v1/usermanagement/users';
@@ -29,6 +31,7 @@ export class DashboardComponent {
   private urlGetProject='http://172.20.10.4:8080/projects';
   taskList: Task[]=[];
   projectList: Project[]=[];
+  dialog: any;
 // userObj: any;
   // http://localhost:8001/v1/usermanagement/users
 
@@ -130,6 +133,22 @@ callForAdmin() {
     console.log(jsonObject)
   }
   });
+}
+
+eventHandle($event :string){
+  debugger;
+  this.isDialogbox = false;
+  console.log("in parent");
+  let role=$event;
+  if(role.toLowerCase()=="admin"){
+    this.isDialogbox = true;
+    // this.dialog.open(CreateUserComponent, {
+    //   data: action
+    // });
+  }
+}
+closeDialogue(event:any){
+  this.isDialogbox = false;
 }
 }
 

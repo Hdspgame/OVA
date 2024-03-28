@@ -5,9 +5,11 @@ import { LoginComponent } from './login/login.component';
 import { TaskComponent } from './task/task.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'login',component:LoginComponent},
   {path:'task',component:TaskComponent},
-  {path:'dashboard',component:DashboardComponent}
+  {path:'dashboard',component:DashboardComponent},
+  {path:'task/*',component:TaskComponent},
 
 ];
 
