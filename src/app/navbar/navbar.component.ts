@@ -51,7 +51,7 @@ export class NavbarComponent {
     this.updateRole();
     this.openDialog=true;
     console.log(this.CompOne);
-    if(this.adminRole){
+    if(this.adminView){
       this.createUser=true;
       this.createTask=false;
       // this.emitter.emit("admin");
