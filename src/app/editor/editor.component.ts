@@ -3,7 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeValue } from '@angular/platform-browser';
 import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { Editor, toDoc, toHTML, Validators } from 'ngx-editor';
-import { TaskserviceService } from '../taskservice.service';
+import { TaskserviceService } from '../services/taskservice.service';
+
 
 
 @Component({

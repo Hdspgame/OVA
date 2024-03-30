@@ -8,9 +8,10 @@ import { TaskComponent } from './task/task.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'login',component:LoginComponent},
-  {path:'task',component:TaskComponent},
   {path:'dashboard',component:DashboardComponent},
-  {path:'task/*',component:TaskComponent},
+  {path:'task/:id',component:TaskComponent,children:[
+   { path:'task/:id',component:TaskComponent}
+  ]},
   {path:'project',component:ProjectComponent},
 
 ];

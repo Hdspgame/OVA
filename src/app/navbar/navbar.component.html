@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg mynav">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">OVA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" href="dashboard">DashBoard</a>
           </li>
           <li class="nav-item">
-            <button (click)="onSubmit()">{{adminView ?'Create User':'Create Task'}}</button>
+            <button class="navButton" (click)="onSubmit()">{{adminView ?'Create User':'Create Task'}}</button>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -22,7 +22,7 @@
         </form>
       </div>
     </div>
-    {{openDialog}}
+    <!-- {{openDialog}} -->
     <ng-container *ngIf="openDialog">
       <app-create-user [adminUser]="createUser" (closeDialogEmiter)="closeDialogue($event)"  > </app-create-user>
       <app-create-task [xys]="createTask" (closeDialogEmiter)="closeDialogue($event)"></app-create-task>

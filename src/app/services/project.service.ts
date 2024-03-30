@@ -8,8 +8,8 @@ import { project } from '../beans/project';
 })
 export class ProjectService {
 
-  getProjectsUrl="http://localhost:8000/projects"
-  saveProjectUrl="http://localhost:8000/project"
+  getProjectsUrl="http://3.111.147.190:8081/projects"
+  saveProjectUrl="http://3.111.147.190:8081/project"
   constructor(private h:HttpClient) { }
 
   public getProjects():Observable<project[]>{

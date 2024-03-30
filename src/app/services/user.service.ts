@@ -8,8 +8,9 @@ import { DeleteUserRequest } from '../beans/DeleteRequest';
   providedIn: 'root'
 })
 export class UserService {
-  unlockUserUrl= "http://localhost:8001/v1/usermanagement";
-  deleteUserUrl= "http://localhost:8001/v1/usermanagement/users";
+  userBaseurl="http://3.111.147.190:8082";
+  unlockUserUrl= this.userBaseurl+"/v1/usermanagement";
+  deleteUserUrl= this.userBaseurl+"/v1/usermanagement/users";
   constructor(private h:HttpClient) { 
     
   }

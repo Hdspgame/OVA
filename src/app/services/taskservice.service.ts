@@ -13,7 +13,7 @@ export class TaskserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private baseUrl = 'http://localhost:8080/task';
+  private baseUrl = 'http://3.111.147.190:8081/task';
 
   getAllTasks(userId: any, taskId: any): Observable<Task[]> {
     if (userId == null)
@@ -23,6 +23,14 @@ export class TaskserviceService {
     return this.httpClient.get<Task[]>(`${this.baseUrl}` + "?userId=" + userId + "&taskId=" + taskId);
   }
 
+  getTasks(userId: string, taskId: string): Observable<Task[]> {
+    debugger
+    if (userId == null)
+      userId = '';
+    if (taskId == null)
+      taskId = '';
+    return this.httpClient.get<Task[]>(`${this.baseUrl}` + "?taskId=" + taskId+"&userId=" + userId);
+  }
   addTask(task: Task): Observable<Task> {
     return this.httpClient.post<Task>(`${this.baseUrl}`, task);
   }

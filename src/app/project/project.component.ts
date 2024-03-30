@@ -16,7 +16,7 @@ export class ProjectComponent implements OnInit {
   // myForm!:FormGroup;
   constructor(projectService: ProjectService,private fb: FormBuilder,private router: Router) { }
   myForm = new FormGroup({
-    pid: new FormControl('', [Validators.required]),
+    pid: new FormControl(''),
     pname: new FormControl('', [Validators.required]),
     pdesc: new FormControl('', [Validators.required]),
     psrtdate: new FormControl('', [Validators.required]),
@@ -48,7 +48,7 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  proj!: project ;
+  proj: project =new project;
 
   editTask(p: project) {
     this.myForm.controls.pid.setValue(p.projectId.toString());
@@ -59,7 +59,8 @@ export class ProjectComponent implements OnInit {
   }
 
   updateTask() {
-    this.proj.projectId = (this.myForm.controls.pid.value) != null ? (this.myForm.controls.pid.value) : '';
+    console.log(this.myForm)
+    // this.proj.projectId = (this.myForm.controls.pid.value) != null ? (this.myForm.controls.pid.value) : '';
     this.proj.projectName = (this.myForm.controls.pname.value) != null ? (this.myForm.controls.pname.value) : '';
     this.proj.projectDescription = (this.myForm.controls.pdesc.value) != null ? (this.myForm.controls.pdesc.value) : '';
     this.proj.projectStartDate = (this.myForm.controls.psrtdate.value) != null ? (this.myForm.controls.psrtdate.value) : '';

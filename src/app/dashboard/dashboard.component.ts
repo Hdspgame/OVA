@@ -5,9 +5,9 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { project } from '../beans/project';
 import { Task } from '../beans/Task';
+import { User } from '../beans/User';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { CusError } from '../login/Error';
-import { User } from './User';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,9 +26,11 @@ export class DashboardComponent {
   isDialogbox : boolean = false;
   errorMessage:String='There is an exception';
   urlbase='';
-  private urlAdmin='http://172.20.10.2:8001/v1/usermanagement/users';
-  private urlUserTask='http://172.20.10.4:8080/task?userId=';
-  private urlGetProject='http://172.20.10.4:8080/projects';
+  taskBaseUrl = 'http://3.111.147.190:8081';
+  userBaseurl="http://3.111.147.190:8082";
+  private urlAdmin=this.userBaseurl+'/v1/usermanagement/users';
+  private urlUserTask=this.taskBaseUrl+'/task?userId=';
+  private urlGetProject=this.taskBaseUrl+'/projects';
   taskList: Task[]=[];
   projectList: project[]=[];
   dialog: any;
@@ -67,6 +69,7 @@ export class DashboardComponent {
     });
   }
 setRole() :void{
+  debugger
   let userType=sessionStorage.getItem("userType");
   if(userType==this.admin){
     this.isAdminRole=true;

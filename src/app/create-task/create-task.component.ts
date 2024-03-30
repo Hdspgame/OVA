@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { project } from '../beans/project';
+import { ProjectService } from '../services/project.service';
 
 
 @Component({
@@ -12,10 +14,16 @@ export class CreateTaskComponent implements OnInit{
   public email='';
   public password='';
   public list=[];
+  public projects:project[]=[];
   @Output() closeDialogEmiter:EventEmitter<any> = new EventEmitter();
-  ngOnInit(){
+  constructor(private projectService:ProjectService){
+  }
+  ngOnInit(){ 
     console.log("hdspgame",this.xys);
-  
+  this.projectService.getProjects().subscribe(resposne => {
+    console.log(resposne);
+    this.projects=resposne;
+  });
     // this.xys=true;
   }
   dialogRef: any;

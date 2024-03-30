@@ -22,7 +22,7 @@ export class LoginComponent {
   errorMessage:String='There is an exception';
   urlbase='';
   responseCode!:HttpStatusCode;
-  private url='http://172.20.10.2:8001/v1/usermanagement';
+  private url='http://3.111.147.190:8082/v1/usermanagement';
   constructor(private fb: FormBuilder,private http: HttpClient,private router :Router) { }
 
   ngOnInit(): void {

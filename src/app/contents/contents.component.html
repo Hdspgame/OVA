@@ -1,14 +1,15 @@
 <div class="ovaHead">
-    <header>TASKNAMEHERE</header>
+    <header>{{task.taskTitle}}</header>
 </div>
+
 <div class="ovaDiv">
     <div class="taskDiv">
         <table>
             <tr><h1>Task Name</h1></tr>
-            <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Assigned to : User</td></tr>
-            <tr><td><div>Status : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : User</td></tr>
-            <tr><td><div>Project  : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : User</td></tr>
-            <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Updated Date : User</td></tr> 
+            <tr><td><div>Type : {{task.taskType}}</div></td><td class="emptyTd">   </td><td class="rightTd">Assigned to : {{user.userName}}</td></tr>
+            <tr><td><div>Status : {{task.taskDescription}}</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : {{task.createdBy}}</td></tr>
+            <tr><td><div>Project  : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : {{task.createdDate}}</td></tr>
+            <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Updated Date : {{task.lastUpdatedDate}}</td></tr> 
         </table>
      </div>
      <div class="descDiv">

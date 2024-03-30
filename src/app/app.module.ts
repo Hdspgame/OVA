@@ -12,12 +12,13 @@ import { CommentsComponent } from './comments/comments.component';
 import { EditorComponent } from './editor/editor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PiechartComponent } from './piechart/piechart.component';
-import { TaskserviceService } from './taskservice.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import { EventEmitter } from 'stream';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ProjectComponent } from './project/project.component';
+import { TaskserviceService } from './services/taskservice.service';
 
 
 
