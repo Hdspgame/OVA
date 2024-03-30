@@ -11,19 +11,19 @@ export class CreateTaskComponent implements OnInit{
   public name='';
   public email='';
   public password='';
+  public list=[];
   @Output() closeDialogEmiter:EventEmitter<any> = new EventEmitter();
   ngOnInit(){
-    console.log("hdspgame");
-    
-    this.xys=true;
+    console.log("hdspgame",this.xys);
+  
+    // this.xys=true;
   }
-  // @Output() closeDialoge : EventEmitter<any> = new EventEmitter();
   dialogRef: any;
   closeDialog(){
     this.xys = false;
     this.closeDialogEmiter.emit(true);
   }
-  onSubmit(){
+   onSubmit(){
     
   }
 }

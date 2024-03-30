@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -15,14 +16,25 @@ export class NavbarComponent {
  public createUser:boolean=false;
   public createTask:boolean=false;
   @Output() emitter= new EventEmitter<string>();
+  openDialog: boolean=false;
+  private admin:string ='Admin';
+  private user:string ='User';
+  descForm!:FormGroup;
 
 
   ngOnInit(): void {
-    if(this.adminView && !this.userView){
-      this.CompOne=this.adminRole;
-    }else{
-      this.CompOne=this.userRole;
-    }
+    debugger
+    let userType=sessionStorage.getItem("userType");
+    if(userType==this.admin){
+      this.adminView=true;
+      this.userView=false;
+    }else if(userType==this.user){
+      this.userView=true;
+      this.adminView=false;
+    } 
+    this.descForm = new FormGroup({
+      editorContent: new FormControl( )
+    });
   }
 
   updateRole():void{
@@ -34,14 +46,24 @@ export class NavbarComponent {
   }
   onSubmit():void{
     this.updateRole();
+    this.openDialog=true;
     console.log(this.CompOne);
     if(this.adminRole){
       this.createUser=true;
+      this.createTask=false;
       this.emitter.emit("admin");
     }else{
+      this.createUser=false;
       this.createTask=true;
       this.emitter.emit("user");
     }
     
+  }
+  closeDialogue(event:any){
+    // this.isDialogbox = false;
+    this.createUser=false;
+    this.openDialog=false;
+    this.createTask=false;
+    // this.isDialogbox=false;
   }
 }

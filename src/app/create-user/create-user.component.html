@@ -1,13 +1,40 @@
-<!-- <p>create-user works!</p> -->
-<!-- <form (ngSubmit)="onSubmit()">
-    <label> Name: <input type="text" [(ngModel)]="name" name="name" required>
-    </label>
-    <br>
-    <label> Email: <input type="email" [(ngModel)]="email" name="email" required>
-    </label>
-    <br>
-    <label> Password: <input type="password" [(ngModel)]="password" name="password" required>
-    </label>
-    <br>
-    <button type="submit">Submit</button>
-  </form> -->
+{{adminUser}}
+<div *ngIf = "adminUser" class="dialog">
+  <div class="dialog-content">
+      <form (ngSubmit)="onSubmit()" [formGroup]="userForm" >
+          <label> Name: <input type="text" [(ngModel)]="name" name="name" required >
+          </label> 
+          <br>
+          <label> Email: <input type="email" [(ngModel)]="email" name="email" required>
+          </label>
+          <br>
+          <label> Password: <input type="password" [(ngModel)]="password" name="password" required>
+          </label>
+          <br>
+          <br>
+          <label> Username: <input type="username" [(ngModel)]="password" name="Username" required>
+          </label>
+          <br>
+          <br>
+          <label> Designation: <input type="text" [(ngModel)]="password" name="Designation" required>
+          </label>
+          <br>
+          <br>
+          <select formControlName="website" class="form-control">  
+            <option disabled>Select Website</option>  
+            <option>Choose Website</option>  
+            <option *ngFor="let web of list">{{list}}</option>  
+          </select>  
+          <br>
+
+          <button type="submit">Submit</button>
+        </form>
+
+      <button (click)="closeDialog()">Close</button>
+  </div>
+  
+</div>
+
+
+
+

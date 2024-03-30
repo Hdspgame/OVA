@@ -137,18 +137,16 @@ callForAdmin() {
 
 eventHandle($event :string){
   debugger;
-  this.isDialogbox = false;
+  // this.isDialogbox = false;
   console.log("in parent");
   let role=$event;
   if(role.toLowerCase()=="admin"){
-    this.isDialogbox = true;
+    // this.isDialogbox = true;
     // this.dialog.open(CreateUserComponent, {
     //   data: action
     // });
   }
 }
-closeDialogue(event:any){
-  this.isDialogbox = false;
-}
+
 }
 
