@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="alert clearfix">
+
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="newProject()"
+                class="btn btn-primary btn-lg float-end">
+                Create Project
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container myPadding">
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <table class="table table-bordered">
+            <tr scope="row">
+                <th>Project Name</th>
+                <th>Description</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+                <th>Created By</th>
+                <th>Created Date</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let proj of projArray">
+                <td>{{proj.projectName}}</td>
+                <td>{{proj.projectDescription}}</td>
+                <td>{{proj.projectStartDate | date}}</td>
+                <td>{{proj.projectEndDate | date}}</td>
+                <td>{{proj.createdBy}}</td>
+                <td>{{proj.createdDate | date}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="editTask(proj)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Edit
+                    </button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="myForm" (ngSubmit)="updateTask()">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Project Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="pname" class="form-label">Project Name</label>
+                        <input type="hidden" formControlName="pid">
+                        <input type="text" formControlName="pname" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div *ngIf="validData['pname'].touched && validData['pname'].invalid" class="form-control">
+                            <div *ngIf="validData['pname'].errors && validData['pname'].errors['required']">Project Name
+                                should be
+                                present</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pdesc" class="form-label">Project Description</label>
+                        <input type="text" formControlName="pdesc" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div *ngIf="validData['pdesc'].touched && validData['pdesc'].invalid" class="form-control">
+                            <div *ngIf="validData['pdesc'].errors && validData['pdesc'].errors['required']">Project
+                                Description should be
+                                present</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="psrtdate" class="form-label">Start Date</label>
+                        <input type="date" formControlName="psrtdate" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div *ngIf="validData['pname'].touched && validData['pname'].invalid" class="form-control">
+                            <div *ngIf="validData['pname'].errors && validData['pname'].errors['required']">Please
+                                select Start Date
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="penddate" class="form-label">End Date</label>
+                        <input type="date" formControlName="penddate" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div *ngIf="validData['penddate'].touched && validData['penddate'].invalid"
+                            class="form-control">
+                            <div *ngIf="validData['penddate'].errors && validData['penddate'].errors['required']">Please
+                                select End Date
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="modalClose"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

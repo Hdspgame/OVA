@@ -1,5 +1,5 @@
 export class project{
-    projectId:number
+    projectId:any
     projectName:string
     projectDescription:string
     projectStartDate:string
@@ -7,4 +7,5 @@ export class project{
     createdBy:string
     lastUpdatedBy:string
     createdDate:string
+    lastUpdatedDate:string
 }

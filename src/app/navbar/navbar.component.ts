@@ -38,11 +38,14 @@ export class NavbarComponent {
   }
 
   updateRole():void{
-    if(this.adminView){
-      this.CompOne=this.adminRole;
-    }else{
-      this.CompOne=this.userRole;
-    }
+    let userType=sessionStorage.getItem("userType");
+    if(userType==this.admin){
+      this.adminView=true;
+      this.userView=false;
+    }else if(userType==this.user){
+      this.userView=true;
+      this.adminView=false;
+    } 
   }
   onSubmit():void{
     this.updateRole();
@@ -51,15 +54,18 @@ export class NavbarComponent {
     if(this.adminRole){
       this.createUser=true;
       this.createTask=false;
-      this.emitter.emit("admin");
+      // this.emitter.emit("admin");
     }else{
       this.createUser=false;
       this.createTask=true;
-      this.emitter.emit("user");
+      // this.emitter.emit("user");
     }
+    console.log(this.createTask," ",this.createUser);
     
   }
   closeDialogue(event:any){
+    console.log(event);
+    
     // this.isDialogbox = false;
     this.createUser=false;
     this.openDialog=false;

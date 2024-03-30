@@ -24,7 +24,7 @@
     </div>
     {{openDialog}}
     <ng-container *ngIf="openDialog">
-      <app-create-user [adminUser]="createUser" (closeDialogEmiter)="closeDialogue($event)" [userForm]="descForm" > </app-create-user>
-      <!-- <app-create-task [xys]="createTask" (closeDialogEmiter)="closeDialogue($event)"></app-create-task> -->
+      <app-create-user [adminUser]="createUser" (closeDialogEmiter)="closeDialogue($event)"  > </app-create-user>
+      <app-create-task [xys]="createTask" (closeDialogEmiter)="closeDialogue($event)"></app-create-task>
  </ng-container>
   </nav>

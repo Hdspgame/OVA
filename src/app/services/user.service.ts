@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DeleteUserRequest } from './beans/DeleteRequest';
-import { project } from './beans/project';
+import { DeleteUserRequest } from '../beans/DeleteRequest';
+
 
 @Injectable({
   providedIn: 'root'

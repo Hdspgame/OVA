@@ -1,16 +1,19 @@
-export class Task {
-    private taskId: number;
-    private projectId: number;
-    private userId: number;
-    private taskType: string;
-    private taskTitle: string;
-    private taskDescription: string;
-    private taskStatus: string;
-    private createdBy: string;
-    private lastUpdatedBy: string;
-    private createdDate: string;
-    private lastUpdatedDate: string;
-    private remarks: Map<string, any>;
-}
+import { project } from "./project"
 
 
+export interface Task {
+    taskId: number
+    projectId: number
+    userId: number
+    taskType: string
+    taskTitle: string
+    taskDescription: string
+    taskStatus: string
+    createdBy: string
+    lastUpdatedBy: string
+    createdDate: string
+    lastUpdatedDate: string
+    remarks: any
+    project:project
+  }
+  

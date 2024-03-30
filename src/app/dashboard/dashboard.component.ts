@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Task } from 'src/app/Task';
+import { project } from '../beans/project';
+import { Task } from '../beans/Task';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { CusError } from '../login/Error';
-import { Project } from '../Project';
 import { User } from './User';
 
 @Component({
@@ -30,7 +30,7 @@ export class DashboardComponent {
   private urlUserTask='http://172.20.10.4:8080/task?userId=';
   private urlGetProject='http://172.20.10.4:8080/projects';
   taskList: Task[]=[];
-  projectList: Project[]=[];
+  projectList: project[]=[];
   dialog: any;
 // userObj: any;
   // http://localhost:8001/v1/usermanagement/users
@@ -52,7 +52,7 @@ export class DashboardComponent {
    }
     this.http.get<any>(this.urlGetProject,HTTPOptions).subscribe(data=>{
       console.log("data",data);
-      this.projectList=<Project[]> JSON.parse(data);
+      this.projectList=<project[]> JSON.parse(data);
       console.log(this.taskList)
     },
     (error)=>{

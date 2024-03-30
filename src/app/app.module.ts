@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventEmitter } from 'stream';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { ProjectComponent } from './project/project.component';
 
 
 
@@ -33,6 +34,7 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     PiechartComponent,
     CreateUserComponent,
     CreateTaskComponent,
+    ProjectComponent
     ],
   imports: [
     BrowserModule,

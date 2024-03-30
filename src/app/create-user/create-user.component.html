@@ -1,7 +1,6 @@
-{{adminUser}}
 <div *ngIf = "adminUser" class="dialog">
   <div class="dialog-content">
-      <form (ngSubmit)="onSubmit()" [formGroup]="userForm" >
+      <form (ngSubmit)="onSubmit()"  >
           <label> Name: <input type="text" [(ngModel)]="name" name="name" required >
           </label> 
           <br>
@@ -20,13 +19,11 @@
           </label>
           <br>
           <br>
-          <select formControlName="website" class="form-control">  
-            <option disabled>Select Website</option>  
-            <option>Choose Website</option>  
-            <option *ngFor="let web of list">{{list}}</option>  
+          <select formControlName="website" class="form-control">   
+            <option>Choose Role</option>  
+            <option *ngFor="let web of list">{{web}}</option>  
           </select>  
           <br>
-
           <button type="submit">Submit</button>
         </form>
 
