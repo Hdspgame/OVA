@@ -1,16 +1,35 @@
 <div class="ovaHead">
     <header>{{task.taskTitle}}</header>
 </div>
-
 <div class="ovaDiv">
+    
     <div class="taskDiv">
+        <button class="editButton" (click)="editTask()">{{editEnable?'update':'edit'}}</button>
+        <div *ngIf="!editEnable">
         <table>
             <tr><h1>Task Name</h1></tr>
-            <tr><td><div>Type : {{task.taskType}}</div></td><td class="emptyTd">   </td><td class="rightTd">Assigned to : {{user.userName}}</td></tr>
-            <tr><td><div>Status : {{task.taskDescription}}</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : {{task.createdBy}}</td></tr>
-            <tr><td><div>Project  : value</div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : {{task.createdDate}}</td></tr>
+            <tr><td><div>Type : {{task.taskType}}</div></td><td class="emptyTd">   </td><td class="rightTd">Assigned to : {{task.userId}}</td></tr>
+            <tr><td><div>Status : {{task.taskStatus}}</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : {{task.createdBy}}</td></tr>
+            <tr><td><div>Project  : {{task.project.projectName}}</div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : {{task.createdDate}}</td></tr>
             <tr><td><div>Type : value</div></td><td class="emptyTd">   </td><td class="rightTd">Updated Date : {{task.lastUpdatedDate}}</td></tr> 
         </table>
+    </div>
+        <ng-container  *ngIf="editEnable">
+        <form [formGroup]="createTaskForm">
+        <table>
+            <tr><h1>Task Name</h1></tr>
+            <tr><td><div> <label> Task Title : <input type="text"  formControlName="taskTitle" >
+            </label></div></td><td class="emptyTd">   </td><td class="rightTd"><label> Assigned to : <input type="text"  formControlName="assignedTo" >
+            </label></td></tr>
+            <tr><td><div>Status : {{task.taskStatus}}</div></td><td class="emptyTd">   </td><td class="rightTd">Created by : {{task.createdBy}}</td></tr>
+            <tr><td><div>Project  : </div></td><td class="emptyTd">   </td><td class="rightTd">Created Date : {{task.createdDate}}</td></tr>
+            <tr><td><div><select formControlName="selectProject" class="form-control">    
+                <option>Project</option>  
+                <option *ngFor="let web of projects" [ngValue]="web.projectId" >{{web.projectName}}</option>  
+              </select>  </div></td><td class="emptyTd">   </td><td class="rightTd">Updated Date : {{task.lastUpdatedDate}}</td></tr> 
+        </table>
+    </form>
+        </ng-container>
      </div>
      <div class="descDiv">
      <ng-container *ngIf="descEditorVisible">

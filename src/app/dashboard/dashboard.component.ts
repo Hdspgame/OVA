@@ -1,14 +1,16 @@
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DeleteUserRequest } from '../beans/DeleteRequest';
 import { project } from '../beans/project';
 import { Task } from '../beans/Task';
 import { User } from '../beans/User';
 import { UrlConstast } from '../constant/UrlConstant';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { CusError } from '../login/Error';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +18,7 @@ import { CusError } from '../login/Error';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+
   private response: any;
   public userlist :User[] =[];
   private admin:string ='Admin';
@@ -35,11 +38,15 @@ export class DashboardComponent {
   taskList: Task[]=[];
   projectList: project[]=[];
   dialog: any;
+  selectProject!:project;
+  createUser: boolean=false;
+  openDialog: boolean=false;
+  userObj: User;
 // userObj: any;
   // http://localhost:8001/v1/usermanagement/users
 
 
-  constructor(private fb: FormBuilder,private http: HttpClient,private router :Router) { }
+  constructor(private fb: FormBuilder,private http: HttpClient,private router :Router,private userService:UserService) { }
 
   ngOnInit(): void {
     this.getProject();
@@ -98,8 +105,9 @@ setRole() :void{
       console.log(this.taskList);
       for(let task of this.taskList){
       for(let project of this.projectList){
-        if(task.projectId=project.projectId){
-          task.project=project
+        if(task.projectId==project.projectId){
+          console.log(task,project)
+          task.project=project;
         }
       }
     }
@@ -113,6 +121,8 @@ setRole() :void{
       console.log(jsonObject)
     }
     });
+    console.log(this.taskList);
+    
   }
 
 callForAdmin() {
@@ -152,5 +162,35 @@ eventHandle($event :string){
   }
 }
 
+deleteUser(user:User) {
+  let d:DeleteUserRequest={
+    userName: '',
+    lastUpdateBy: ''
+  };
+  d.userName=user.userName
+    d.lastUpdateBy=user.lastUpdateBy
+    console.log(this.userService.deleteUser(d).subscribe(s=>{
+      console.log(s)
+    },(e:HttpErrorResponse)=>console.log(e)))
+  }
+  unlockUser(user:User) {
+    this.userService.unlockUser(user.userName).subscribe(response=>{
+      // this.p="Successfully unlocked the user"
+   },(e:HttpErrorResponse)=>{})
+  }
+  editUser(user:User) {
+    this.userObj=user;
+  this.openDialog=true;
+  this.createUser=false;
+  }
+
+  closeDialogue(event:any){
+    console.log(event);
+    
+    // this.isDialogbox = false;
+    this.createUser=false;
+    this.openDialog=false;
+    // this.isDialogbox=false;
+  }
 }
 

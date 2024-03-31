@@ -1,22 +1,22 @@
 <div *ngIf = "xys" class="dialog">
     <div class="dialog-content">
-        <form (ngSubmit)="onSubmit()">
-            <label> TaskName : <input type="text" [(ngModel)]="name" name="name" required>
+        <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()">
+            <label> TaskName : <input type="text"  formControlName="taskName" required>
             </label>
             <br>
-            <label> Assigned to : <input type="text" [(ngModel)]="email" name="email" required>
+            <label> Assigned to : <input type="text"  formControlName="assignedTo" required>
             </label>
             <br>
-            <label> Project Id :<select >   
+            <label> Project Id :<select   formControlName="selectProject">   
               <option >Choose Role</option>  
-              <option *ngFor="let web of projects">{{web.projectName}}</option>  
+              <option *ngFor="let web of projects" [ngValue]="web.projectId">{{web.projectName}}</option>  
             </select> 
           </label>
             <br>
-            <label> Type : <input type="text" [(ngModel)]="password" name="Username" required>
+            <label> Type : <input type="text"  formControlName="taskType" required>
             </label>
             <br>
-            <label> Prioity : <input type="text" [(ngModel)]="password" name="Designation" required>
+            <label> Prioity : <input type="text"  formControlName="priority" required>
             </label>
             <!-- <select formControlName="website" class="form-control">  
               <option disabled>Select Website</option>  

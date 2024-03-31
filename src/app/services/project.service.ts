@@ -10,6 +10,7 @@ import { UrlConstast } from '../constant/UrlConstant';
 export class ProjectService {
 
   getProjectsUrl=UrlConstast.TaskServiceBase+"/projects";
+  getProjectUrl=UrlConstast.TaskServiceBase+"/project";
   saveProjectUrl=UrlConstast.TaskServiceBase+"/project";
   constructor(private h:HttpClient) { }
 
@@ -19,5 +20,11 @@ export class ProjectService {
 
   public saveProject(proj:project):Observable<project>{
     return this.h.post<project>(`${this.saveProjectUrl}`,proj)
+  }
+  public getProject(projectId:number):Observable<project>{
+    return this.h.get<project>(`${this.getProjectUrl}/${projectId}`)
+  }
+  public updateProject(proj: project, pid: any): Observable<project> {
+    return this.h.put<project>(`${this.saveProjectUrl}` + "/" + pid, proj)
   }
 }

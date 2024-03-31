@@ -1,25 +1,29 @@
 <div *ngIf = "adminUser" class="dialog">
   <div class="dialog-content">
-      <form (ngSubmit)="onSubmit()"  >
-          <label> Name: <input type="text" [(ngModel)]="name" name="name" required >
+    Create User
+      <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()"  >
+          <label> Name: <input type="text" formControlName="nm" name="name" required >
           </label> 
           <br>
-          <label> Email: <input type="email" [(ngModel)]="email" name="email" required>
+          <label> Email: <input type="email" formControlName="email" name="email" required>
           </label>
           <br>
-          <label> Password: <input type="password" [(ngModel)]="password" name="password" required>
+          <label> Password: <input type="password" formControlName="password" name="password" required>
           </label>
           <br>
-          <label> Username: <input type="username" [(ngModel)]="password" name="Username" required>
+          <label> Username: <input type="username" formControlName="username" name="Username" required>
           </label>
           <br>
-          <label> Designation: <input type="text" [(ngModel)]="password" name="Designation" required>
+          <label> Designation: <input type="text" formControlName="designation" name="Designation" required>
+          </label>
+          <label> Designation: <input type="text" formControlName="phone" name="phone" required>
           </label>
           <br>
-          <label>Role :<select >   
+          <label>Role :<select formControlName="userrole">   
             <option >Choose Role</option>  
-            <option *ngFor="let web of list">{{web}}</option>  
+            <option *ngFor="let web of list" [ngValue]="web">{{web}}</option>  
           </select> 
+          <p>{{msg}}</p>
         </label>
           <br>
           <button class="button-6" type="submit">Submit</button>
@@ -28,6 +32,34 @@
       <button class="closeDia"  (click)="closeDialog()">Close</button>
   </div>
   
+</div>
+
+<div *ngIf = "editUser" class="dialog">
+  <div class="dialog-content">
+    Update User
+      <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+          <label> Name: <input type="text" formControlName="nm" name="name" required >
+          </label> 
+          <br>
+          <label> Email: <input type="email" formControlName="email" name="email" required>
+          </label>
+          <br>
+          <label> Phone: <input type="number" formControlName="phone"  required>
+          </label>
+          <br>
+          <label> Username: <input type="username" formControlName="username" name="Username">
+          </label>
+          <br>
+          <label> Designation: <input type="text" formControlName="designation" name="Designation" required>
+          </label>
+          <br>
+          <p>{{msg}}</p>
+          <br>
+          <button class="button-6" type="submit">Submit</button>
+        </form>
+
+      <button class="closeDia"  (click)="closeDialog()">Close</button>
+  </div>
 </div>
 
 

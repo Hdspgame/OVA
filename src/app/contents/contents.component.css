@@ -18,7 +18,7 @@ div{
 }
 .taskDiv{
     padding: 20px;
-    display: flex; 
+    /* display: flex;  */
     flex-direction: row; 
     box-shadow :  2px 2px 20px rgba(0, 0, 0, 0.72);
 }
@@ -282,3 +282,39 @@ text-align: left;
     /* margin: 50px; */
     padding: 50px;
 }
+.editButton {
+    float: right;
+      background: #4287ff;
+      border: 1px solid #798de6;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 16px;
+      min-height: 40px;
+      outline: 0;
+      padding: 12px 14px;
+      text-align: center;
+      text-rendering: geometricprecision;
+      text-transform: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+    }
+    
+    .editButton:hover,
+    .editButton:active {
+      background-color: initial;
+      background-position: 0 0;
+      color: #546ee1a2;
+    }
+    
+    .editButton:active {
+      opacity: .5;
+    } 

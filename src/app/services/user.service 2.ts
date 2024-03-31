@@ -22,14 +22,14 @@ export class UserService {
    return this.h.post<HttpResponse<any>>(`${this.unlockUserUrl}`,param,{observe: 'response'})
   }
 
-public deleteUser(usr:DeleteUserRequest):Observable<any>{
+  public deleteUser(usr:DeleteUserRequest):Observable<any>{
     const options = {
       body: {
         userName: usr.userName,
         lastUpdateBy :usr.lastUpdateBy
       }
     }
-   return this.h.delete<any>(`${this.userUrl}`, options)
+   return this.h.delete<any>(`${this.unlockUserUrl}`, options)
   }
 
   public saveUser(user:User):Observable<User>{

@@ -3,13 +3,19 @@
 <div>
     <div *ngIf="isAdminRole">
         <ul>
-            <li *ngFor='let userObj of userlist'> {{userObj.userName}}     {{userObj.userRole}}</li> 
+            <li *ngFor='let userObj of userlist'> {{userObj.userName}}     {{userObj.userRole}}
+                <button (click)="editUser(userObj)">edit</button><button (click)="unlockUser(userObj)">unlock</button><button (click)="deleteUser(userObj)">delete</button>
+            </li> 
         </ul>
     </div>
+    <ng-container *ngIf="openDialog">
+        yoyoyoyo
+        <app-create-user [createUser]="createUser" (closeDialogEmiter)="closeDialogue($event)"  [obj]="userObj"> </app-create-user>
+   </ng-container>
     <div *ngIf="isUserRole">
        <table>
-        <thead><tr><th>Task ID</th><th>Task Description</th><th>Created By</th></thead>
-        <tr *ngFor="let task of taskList"><td><a href="/task/{{task.taskId}}">{{task.taskId}}</a></td><td>{{task.taskDescription}}</td>{{task.createdBy}}<td></td></tr>
+        <thead><tr><th>Task ID</th><th>Task Title</th><th>Created By</th></thead>
+        <tr *ngFor="let task of taskList"><td><a href="/task/{{task.taskId}}">{{task.project.projectName}}{{task.taskId}}</a></td><td>{{task.taskTitle}}</td>{{task.createdBy}}<td></td></tr>
        </table>
     </div>
     <div >

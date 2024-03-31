@@ -1,10 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ProjectService } from '../services/project.service';
 import { project } from '../beans/project';
-import { FormGroup, FormControl,Validators,ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
+import { ProjectService } from '../services/project.service';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-project',
@@ -12,35 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
-  
-  // myForm!:FormGroup;
-  constructor(projectService: ProjectService,private fb: FormBuilder,private router: Router) { }
+
+  ngOnInit(): void {
+    this.getProjects();
+  }
+
   myForm = new FormGroup({
-    pid: new FormControl(''),
+    pid: new FormControl('', [Validators.required]),
     pname: new FormControl('', [Validators.required]),
     pdesc: new FormControl('', [Validators.required]),
     psrtdate: new FormControl('', [Validators.required]),
     penddate: new FormControl('', [Validators.required])
   });
-  ngOnInit(): void {
-    this.getProjects();
-    let userType=sessionStorage.getItem("userType");
-    if(userType=="Admin"){
-      // this.adminUser=true;
-    }else{
-      this.router.navigate(['/dashboard']);
-      // this.adminUser=false;
-  }
-}
-
-  
 
   get validData() {
     return this.myForm.controls;
   }
   projService = inject(ProjectService);
+  constructor(projectService: ProjectService) { }
 
-  projArray: project[] = []
+  projArray: project[] = [{
+    projectName: '',
+    projectId: 0,
+    projectDescription: '',
+    projectStartDate: '',
+    projectEndDate: '',
+    createdBy: '',
+    createdDate: '',
+    lastUpdatedBy: '',
+    lastUpdatedDate: ''
+  }]
 
   getProjects() {
     this.projService.getProjects().subscribe((a: project[]) => {
@@ -48,7 +47,17 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  proj: project =new project;
+  proj: project = {
+    projectName: '',
+    projectId: null,
+    projectDescription: '',
+    projectStartDate: '',
+    projectEndDate: '',
+    createdBy: '',
+    createdDate: '',
+    lastUpdatedBy: '',
+    lastUpdatedDate: ''
+  }
 
   editTask(p: project) {
     this.myForm.controls.pid.setValue(p.projectId.toString());
@@ -58,18 +67,29 @@ export class ProjectComponent implements OnInit {
     this.myForm.controls.penddate.setValue(p.projectEndDate);
   }
 
-  updateTask() {
-    console.log(this.myForm)
-    // this.proj.projectId = (this.myForm.controls.pid.value) != null ? (this.myForm.controls.pid.value) : '';
+  updateProject() {
+    this.proj.projectId = (this.myForm.controls.pid.value) != null ? (this.myForm.controls.pid.value) : '';
     this.proj.projectName = (this.myForm.controls.pname.value) != null ? (this.myForm.controls.pname.value) : '';
     this.proj.projectDescription = (this.myForm.controls.pdesc.value) != null ? (this.myForm.controls.pdesc.value) : '';
     this.proj.projectStartDate = (this.myForm.controls.psrtdate.value) != null ? (this.myForm.controls.psrtdate.value) : '';
     this.proj.projectEndDate = (this.myForm.controls.penddate.value) != null ? (this.myForm.controls.penddate.value) : '';
-    this.projService.saveProject(this.proj).subscribe((res: project) => {
-      console.log(res);
-      document.getElementById('modalClose')?.click();
-      this.getProjects();
-    });
+    let temp=sessionStorage.getItem("user");
+    let user=JSON.parse(temp || '{}');
+    this.proj.createdBy = user.userName;
+    this.proj.lastUpdatedBy = user.userName;
+    if (this.proj.projectId) {
+      this.projService.updateProject(this.proj, this.proj.projectId).subscribe((res: project) => {
+        console.log(res);
+        document.getElementById('modalClose')?.click();
+        this.getProjects();
+      });
+    } else {
+      this.projService.saveProject(this.proj).subscribe((res: project) => {
+        console.log(res);
+        document.getElementById('modalClose')?.click();
+        this.getProjects();
+      });
+    }
   }
 
   newProject() {

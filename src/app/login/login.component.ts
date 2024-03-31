@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpStatusCode } from '@angular/
 import { Component,  } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UrlConstast } from '../constant/UrlConstant';
 import { CusError } from './Error';
 
 
@@ -22,7 +23,7 @@ export class LoginComponent {
   errorMessage:String='There is an exception';
   urlbase='';
   responseCode!:HttpStatusCode;
-  private url='http://3.111.147.190:8082/v1/usermanagement';
+  private url=UrlConstast.UserServiceBase+'/v1/usermanagement';
   constructor(private fb: FormBuilder,private http: HttpClient,private router :Router) { }
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Task } from '../beans/Task';
+import { TaskReq } from '../beans/TaskReq';
 import { UrlConstast } from '../constant/UrlConstant';
 
 @Injectable({
@@ -32,7 +33,7 @@ export class TaskserviceService {
       taskId = '';
     return this.httpClient.get<Task[]>(`${this.baseUrl}` + "?taskId=" + taskId+"&userId=" + userId);
   }
-  addTask(task: Task): Observable<Task> {
+  addTask(task: TaskReq): Observable<Task> {
     return this.httpClient.post<Task>(`${this.baseUrl}`, task);
   }
 
