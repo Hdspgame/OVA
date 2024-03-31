@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Task } from '../beans/Task';
+import { UrlConstast } from '../constant/UrlConstant';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TaskserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private baseUrl = 'http://3.111.147.190:8081/task';
+  private baseUrl = UrlConstast.TaskServiceBase+'/task';
 
   getAllTasks(userId: any, taskId: any): Observable<Task[]> {
     if (userId == null)

@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { project } from '../beans/project';
+import { UrlConstast } from '../constant/UrlConstant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  getProjectsUrl="http://3.111.147.190:8081/projects"
-  saveProjectUrl="http://3.111.147.190:8081/project"
+  getProjectsUrl=UrlConstast.TaskServiceBase+"/projects";
+  saveProjectUrl=UrlConstast.TaskServiceBase+"/project";
   constructor(private h:HttpClient) { }
 
   public getProjects():Observable<project[]>{

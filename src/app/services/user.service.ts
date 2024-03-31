@@ -2,13 +2,14 @@ import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DeleteUserRequest } from '../beans/DeleteRequest';
+import { UrlConstast } from '../constant/UrlConstant';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userBaseurl="http://3.111.147.190:8082";
+  userBaseurl=UrlConstast.UserServiceBase;
   unlockUserUrl= this.userBaseurl+"/v1/usermanagement";
   deleteUserUrl= this.userBaseurl+"/v1/usermanagement/users";
   constructor(private h:HttpClient) { 

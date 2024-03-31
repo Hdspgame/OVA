@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { project } from '../beans/project';
 import { Task } from '../beans/Task';
 import { User } from '../beans/User';
+import { UrlConstast } from '../constant/UrlConstant';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { CusError } from '../login/Error';
 
@@ -26,8 +27,8 @@ export class DashboardComponent {
   isDialogbox : boolean = false;
   errorMessage:String='There is an exception';
   urlbase='';
-  taskBaseUrl = 'http://3.111.147.190:8081';
-  userBaseurl="http://3.111.147.190:8082";
+  taskBaseUrl = UrlConstast.TaskServiceBase;
+  userBaseurl=UrlConstast.UserServiceBase;
   private urlAdmin=this.userBaseurl+'/v1/usermanagement/users';
   private urlUserTask=this.taskBaseUrl+'/task?userId=';
   private urlGetProject=this.taskBaseUrl+'/projects';
